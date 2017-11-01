@@ -2,5 +2,5 @@
 Short Circuit Finder Senior Design Project
 
 Team Lead: Matt Duncan,
-David Austin,
+Team Members: David Austin,
 Mike Dugas
