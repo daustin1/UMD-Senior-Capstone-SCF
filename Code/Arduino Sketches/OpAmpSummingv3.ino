@@ -23,21 +23,26 @@ void loop() {
  uint16_t temp0 = analogRead(A0);
  uint16_t temp1 = analogRead(A1);
  uint16_t temp2 = analogRead(A2);
- //uint16_t temp3 = analogRead(A3);
+ uint16_t temp3 = analogRead(A3);
+ uint16_t temp4 = analogRead(A4);
+
  Serial.print("\ntemp0: ");
  Serial.print(temp0);
  Serial.print("\ttemp1: ");
  Serial.print(temp1); 
  Serial.print("\ttemp2: ");
  Serial.print(temp2);
-// Serial.print("\ttemp3: ");
-// Serial.print(temp3);
-colormap(temp0,&r,&g,&b);
+ Serial.print("\ttemp3: ");
+ Serial.print(temp3);
+ Serial.print("\tAvg: ");
+ Serial.print(1023-temp4);
+ uint16_t avg = 1023-temp4;
+colormap(avg,&r,&g,&b);
 // strip.setPixelColor(0,b,g,r);
 // strip.show();
 //setAllLeds(r,g,b);//use for setting all the LEDS on the strip
 //setAllLeds(0,0,0);
-setLedPortion(r,g,b,5);
+setLedPortion(r,g,b,0);
 
 }
 //Sets each pixel to the color specified in the function call, then turns on the pixel to that color
@@ -56,24 +61,24 @@ void setLedPortion(uint8_t *r,uint8_t *g,uint8_t *b, int n){
   }
 }
 
-//Dr. Viall's colormap function to map the spectrum based on the provided temp input
+//colormap function to map the spectrum based on the provided temp input
 void colormap(uint16_t i, uint8_t *r,uint8_t *g,uint8_t *b)
 {
   uint8_t v;
-if (i<280)
+if (i<300)
     {
       //b-g
-      v=map(i,0,280,0,255);  
+      v=map(i,0,300,0,255);  
                            //b,g,r
       //strip.setPixelColor(0,255-v,v,0);
       *r=0;
       *b=255-v;
       *g=v;
     }
-    else //>200
+    else //>301
     {
       //g-r
-      v=map(i,281,600,0,255); 
+      v=map(i,301,440,0,255); 
       // b,g,r 
       *r=v;
       *b=0;
