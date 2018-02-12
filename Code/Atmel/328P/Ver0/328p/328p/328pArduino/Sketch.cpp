@@ -1,24 +1,26 @@
-﻿/*Begining of Auto generated code by Atmel studio */
+﻿/*
+* SCF 328P Converted Code Ver 1
+* Authors: David Austin, Matthew Duncan, Michael Dugas
+*/
+
+/*Begining of Auto generated code by Atmel studio */
 #include <Arduino.h>
+#include <Avr/io.h>
 /*End of auto generated code by Atmel studio */
 
 #include <Adafruit_DotStar.h>
 #include <SPI.h>         // COMMENT OUT THIS LINE FOR GEMMA OR TRINKET
-#include <avr/io.h>
-#include <stdlib.h>
-#include <stdio.h.>
 //Beginning of Auto generated function prototypes by Atmel Studio
 void setAllLeds(uint8_t *r, uint8_t *g, uint8_t *b);
 void setLedPortion(uint8_t *r, uint8_t *g, uint8_t *b, int n);
 void colormap(uint16_t i, uint8_t *r, uint8_t *g, uint8_t *b);
 //End of Auto generated function prototypes by Atmel Studio
 
-
 #define NUMPIXELS 144 // Number of LEDs in strip
 
 // Here's how to control the LEDs from any two pins:
-#define DATAPIN    4
-#define CLOCKPIN   5
+#define DATAPIN    5
+#define CLOCKPIN   6
 
 Adafruit_DotStar strip = Adafruit_DotStar(
   NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_RGB);
@@ -33,6 +35,9 @@ void setup() {
 void loop() { 
  //0-200 blue->green
  //201-3ff green-> red
+ 
+ //setup of the five analog read pins for the sensors
+
  uint8_t r,g,b;
  uint16_t temp0 = analogRead(A0);
  uint16_t temp1 = analogRead(A1);
@@ -40,6 +45,7 @@ void loop() {
  uint16_t temp3 = analogRead(A3);
  uint16_t temp4 = analogRead(A4);
 
+//Serial print the values of each sensor, and print the output of the op amp averaged value
  Serial.print("\ntemp0: ");
  Serial.print(temp0);
  Serial.print("\ttemp1: ");
@@ -49,22 +55,24 @@ void loop() {
  Serial.print("\ttemp3: ");
  Serial.print(temp3);
  Serial.print("\tAvg: ");
- Serial.print(temp4);
+ Serial.print(1023-temp4);
  uint16_t avg = 1023-temp4;
+ 
 colormap(avg,&r,&g,&b);
 // strip.setPixelColor(0,b,g,r);
 // strip.show();
 //setAllLeds(r,g,b);//use for setting all the LEDS on the strip
-//setLedPortion(&r,&g,&b,2);
-setAllLeds(&r,&g,&b);
-
+//setAllLeds(0,0,0);
+setLedPortion(&r,&g,&b,0);
 }
+
 //Sets each pixel to the color specified in the function call, then turns on the pixel to that color
 void setAllLeds(uint8_t *r,uint8_t *g,uint8_t *b){
    for(int i = 0; i<NUMPIXELS; i++)
    strip.setPixelColor(i,*b,*g,*r);
    strip.show();
 }
+
 //Sets portion of LEDS based on provided section
 void setLedPortion(uint8_t *r,uint8_t *g,uint8_t *b, int n){
   //Each sensor has about 11 LEDS
