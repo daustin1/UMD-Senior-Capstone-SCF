@@ -1,0 +1,13 @@
+G04 Gerber job file.*
+%TF.FileFunction,JobInfo*%
+%TF.GenerationSoftware,Autodesk,EAGLE,8.7.1*%
+%TF.CreationDate,2018-03-26T01:42:32Z*%
+%TF.Part,Single*%
+%MOMM*%
+%TJ.B_Owner,David Austin <daustin1@umassd.edu>*%
+%TJ.B_ID,SCFschem*%
+%TJ.B_LayerNum,2*%
+%TJ.B_Thickness,1.570000*%
+%TJ.B_Size_X,53.585409*%
+%TJ.B_Size_Y,22.850000*%
+M02*
