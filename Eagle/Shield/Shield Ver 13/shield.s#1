@@ -6726,13 +6726,6 @@ Source: http://www.diodes.com/datasheets/ds23001.pdf</description>
 <pinref part="B2" gate="G$1" pin="5V@0"/>
 <wire x1="78.74" y1="83.82" x2="76.2" y2="83.82" width="0.1524" layer="91"/>
 <label x="76.2" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
-<pinref part="B2" gate="G$1" pin="5V@2"/>
-<wire x1="78.74" y1="78.74" x2="76.2" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="78.74" x2="76.2" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="B2" gate="G$1" pin="5V@1"/>
-<wire x1="76.2" y1="81.28" x2="76.2" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="78.74" y1="81.28" x2="76.2" y2="81.28" width="0.1524" layer="91"/>
-<junction x="76.2" y="81.28"/>
 </segment>
 </net>
 <net name="VREF" class="0">

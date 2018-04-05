@@ -167,8 +167,6 @@
 <wire x1="0" y1="1.27" x2="0" y2="20.32" width="0" layer="20"/>
 <wire x1="0" y1="20.32" x2="0.68" y2="21" width="0" layer="20" curve="-90"/>
 <text x="41.91" y="19.05" size="1" layer="22" rot="MR0">Designed By: David Austin, Matthew Duncan, Michael Dugas</text>
-<text x="17.145" y="1.651" size="1.778" layer="21">+</text>
-<text x="30.226" y="1.905" size="1.778" layer="21">-</text>
 </plain>
 <libraries>
 <library name="con-lstb" urn="urn:adsk.eagle:library:162">
