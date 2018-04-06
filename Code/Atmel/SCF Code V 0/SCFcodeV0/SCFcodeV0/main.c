@@ -18,8 +18,9 @@ void setupLED()
 {
 	DDRG |= (1<<DDG5); //config pin 5 of PORTG as output
 	DDRE |= (1<<DDE3); //config pin 3 of PORTE as output
-	PORTE |= (1<<DATAPIN);
-	PORTG |= (1<<CLOCKPIN);
+	PORTE |= (1<<DATAPIN); //init high
+	PORTG |= (1<<CLOCKPIN); // init high
+	
 }
 int main(void)
 {
